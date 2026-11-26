@@ -1,0 +1,22 @@
+name: "context-diet AI Bloat & Context Guard"
+description: "Audit AI coding agent context burn and block AI code bloat in pull requests"
+inputs:
+  mode:
+    description: "scan or diff"
+    required: false
+    default: "diff"
+  fail-under:
+    description: "Minimum health score (0-100) before failing CI"
+    required: false
+    default: "65"
+runs:
+  using: "composite"
+  steps:
+    - name: Run context-diet
+      shell: bash
+      run: |
+        if [ "${{ inputs.mode }}" = "scan" ]; then
+          node "${{ github.action_path }}/bin/context-diet.mjs" scan .
+        else
+          node "${{ github.action_path }}/bin/context-diet.mjs" diff HEAD~1 --fail-under "${{ inputs.fail-under }}"
+        fi

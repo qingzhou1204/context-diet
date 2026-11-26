@@ -1,0 +1,27 @@
+{
+  "name": "context-diet",
+  "version": "1.0.0",
+  "description": "Zero-dependency CLI & GitHub Action to audit AI Coding Agent context burn and catch AI code bloat in 1 second.",
+  "type": "module",
+  "bin": {
+    "context-diet": "./bin/context-diet.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/context_diet.test.mjs"
+  },
+  "keywords": [
+    "claude-code",
+    "cursor",
+    "codex",
+    "ai-agents",
+    "token-optimization",
+    "code-bloat",
+    "github-action",
+    "cli"
+  ],
+  "author": "qingzhou1204",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}
